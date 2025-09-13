@@ -1,14 +1,13 @@
 0- Totaly pattern: 
 0-1: ansible [pattern] -m [module] -a "[module options]"
 
-
 Examples: 
 1- List Host: 
 1-1: ansible all --list-hosts
 
 2- Ping all hosts: 
 2-1: ansible all -m ping
-2-2: Ping sepecific nodes: ansible databases -i hosts.ini -m ping 
+2-2: Ping sepecifice nodes: ansible databases -i hosts.ini -m ping 
 
 3- Exec remote command: 
 3-1: ansible webserver -i hosts.ini -a "ls /tmp"
