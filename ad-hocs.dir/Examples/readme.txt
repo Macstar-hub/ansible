@@ -13,13 +13,14 @@ Examples:
 3-1: ansible webserver -i hosts.ini -a "ls /tmp"
 
 4- Copy a file: 
-4-1: ansible databases -i hosts.ini -m copy -a 'src=/tmp/localfile.test-file/test.txt dest=/tmp/test-database.test-file/test-database.test-2 owner=ubuntu mode=0644'  --become root
+4-1: ansible db-asiatech -i hosts.ini -m copy -a 'src=/tmp/ansible.dir/localhost.txt dest=/tmp/remote.txt owner=ubuntu mode=0644' --become
 
 5- Download a file from host: 
-5-1: ansible databases -i hosts.ini -m fetch -a 'src=/tmp/test-database.test-file/test-from-database-node.txt dest=/tmp/localfile.test-file/test.txt1 flat=yes'
+5-1: ansible db-asiatech -i hosts.ini -m fetch -a 'src=/tmp/remote.txt dest=/tmp/ansible.dir/test.txt owner=ubuntu mode=0644' --become
 
 6- Installed packages:
-6-1: ansible webserver -i hosts.ini -m apt -a 'name=nginx state=latest'
+6-1: ansible webserver -i hosts.ini -m apt -a 'name=nginx state=present'
+6-2: ansible webserver -i hosts.ini -m apt -a 'name=nginx update_cache=yes'
 6-2: ansible webserver -i hosts.ini -m apt -a 'name=nginx state=absent purge=yes autoremove=yes'
 
 7- Service manages:
