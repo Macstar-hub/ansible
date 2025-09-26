@@ -13,8 +13,8 @@
         ports:
           - "8089:80"
       when:
-        - '"run_container" in ansible_run_tags'
-        - '"control_container" in ansible_run_tags'
+        - run_container | default(false) | bool
+        - control_container | default(false) | bool
 
     - name: Stop a Docker container
       check_mode: no
@@ -22,9 +22,9 @@
         name: my_nginx_container
         state: stopped
       when:
-        - '"stop_container" in ansible_run_tags'
-        - '"control_container" in ansible_run_tags'
-
+        - stop_container | default(false) | bool
+        - control_container | default(false) | bool
+        
     - name: Remove a Docker container
       docker_container:
         name: my_nginx_container
